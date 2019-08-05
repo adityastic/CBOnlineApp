@@ -5,6 +5,7 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.codingblocks.cbonlineapp.database.models.Course
 import com.codingblocks.cbonlineapp.database.models.CourseContent
+import com.codingblocks.cbonlineapp.database.models.CourseDoubts
 import com.codingblocks.cbonlineapp.database.models.CourseRun
 import com.codingblocks.cbonlineapp.database.models.CourseSection
 import com.codingblocks.cbonlineapp.database.models.CourseWithInstructor
@@ -18,13 +19,15 @@ import com.codingblocks.cbonlineapp.database.models.SectionWithContent
 @Database(
     entities = [CourseRun::class, CourseSection::class, CourseContent::class, Instructor::class, Notification::class,
         CourseWithInstructor::class, SectionWithContent::class, DoubtsModel::class, NotesModel::class, Course::class,
-        JobsModel::class
+        JobsModel::class, CourseDoubts::class
     ], exportSchema = true, version = 17
 )
 @TypeConverters(TimestampConverter::class, CourseIdList::class)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun courseRunDao(): CourseRunDao
+
+    abstract fun courseDoubtsDao(): CourseDoubtsDao
 
     abstract fun sectionDao(): SectionDao
 

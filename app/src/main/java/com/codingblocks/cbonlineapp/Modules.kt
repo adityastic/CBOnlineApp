@@ -54,6 +54,11 @@ val databaseModule = module {
 
     factory {
         val database: AppDatabase = get()
+        database.courseDoubtsDao()
+    }
+
+    factory {
+        val database: AppDatabase = get()
         database.notesDao()
     }
 

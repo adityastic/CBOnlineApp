@@ -9,6 +9,7 @@ import androidx.room.ForeignKey
 import androidx.room.Index
 import androidx.room.PrimaryKey
 import com.codingblocks.onlineapi.models.CourseId
+import com.codingblocks.onlineapi.models.CreatedBy
 import java.sql.Date
 
 open class BaseModel(
@@ -35,6 +36,18 @@ data class Course(
     var categoryId: Int,
     var faq: String? = ""
 ) : BaseModel(uid, updated_at)
+
+@Entity
+data class CourseDoubts(
+    @PrimaryKey
+    var id: String = "",
+    var createdAt: String = "",
+    var title: String = "",
+    var username: String = "",
+    var avatarLink: String = "",
+    var description: String = "",
+    var courseId: String = ""
+)
 
 @Entity(
     indices = [Index("crCourseId")],
@@ -325,6 +338,7 @@ data class JobsModel(
     val company: Companies,
     val courseId: ArrayList<CourseId>
 )
+
 @Entity
 class FormModel(
     val name: String,
@@ -332,6 +346,7 @@ class FormModel(
     val title: String,
     val type: String
 )
+
 @Entity
 data class Companies(
     val id: String,
